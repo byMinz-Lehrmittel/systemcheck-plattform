@@ -93,7 +93,7 @@ main { flex: 1; width: 100%; min-width: 0; overflow-x: clip; max-width: 1040px; 
 }
 .karte .bild { height: 96px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
 .karte .bild img { max-height: 96px; width: auto; }
-.karte .bild img.rahmen { border: 1px solid #555; }
+.karte .bild img.rahmen { border: 0; }
 .karte .meta { font-size: 13px; margin: 0 0 18px; }
 .karte .titel { font-weight: 700; margin: 0; font-size: 15px; }
 .karte .art { margin: 2px 0 0; font-size: 15px; }
