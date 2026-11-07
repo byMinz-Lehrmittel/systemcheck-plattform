@@ -132,6 +132,7 @@ a.karte:hover, a.karte:focus-visible { transform: translateY(-3px); box-shadow: 
 
 /* ---------- Übersicht ---------- */
 .bereich { position: relative; margin-top: 70px; }
+.bereich + .bereich { margin-top: 140px; }
 .bereich-label { position: absolute; top: -78px; left: -6px; z-index: 2; margin: 0; width: 160px; }
 .bereich-label img { width: 100%; }
 
@@ -140,10 +141,10 @@ a.karte:hover, a.karte:focus-visible { transform: translateY(-3px); box-shadow: 
 .bereich--sus .bereich-box { background: var(--grau-panel); }
 
 .raster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.raster .kind { grid-column: 2 / span 2; align-self: center; justify-self: center; max-width: 400px; }
+.raster .kind { grid-column: 2 / span 2; align-self: start; justify-self: start; width: min(490px, 100%); margin: -30px 0 -95px 60px; position: relative; z-index: 1; pointer-events: none; }
 @media (max-width: 900px) {
   .raster { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-  .raster .kind { grid-column: auto; }
+  .raster .kind { grid-column: 1 / -1; justify-self: center; margin: 0 0 -60px; width: min(420px, 100%); }
 }
 @media (max-width: 560px) {
   .raster { grid-template-columns: 1fr; }
@@ -328,3 +329,71 @@ a.karte:hover, a.karte:focus-visible { transform: translateY(-3px); box-shadow: 
 .nur-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* ---------- Spiel Energie ---------- */
+.energie-intro { position: relative; display: flex; justify-content: center; margin: 28px 0 34px; }
+.energie-anleitung { max-width: 520px; text-align: center; font-size: 14px; }
+.energie-anleitung p { margin: 0 0 12px; }
+.energie-intro .neu-starten { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
+.mini-pfeil { width: 13px; height: 17px; vertical-align: -3px; fill: #fff; stroke: #555; stroke-width: 1.2; }
+@media (max-width: 900px) {
+  .energie-intro { flex-direction: column; align-items: center; gap: 12px; }
+  .energie-intro .neu-starten { position: static; transform: none; }
+}
+
+.legende { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-flow: column; grid-template-rows: repeat(4, auto); gap: 16px 30px; margin: 0 10px 50px; }
+.legende-eintrag { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.3; }
+.legende-eintrag span { padding-top: 3px; }
+.nummer {
+  flex: none; width: 28px; height: 28px; border-radius: 50%; border: 0; padding: 0;
+  background: #111; color: #fff; font-weight: 700; font-size: 13px; cursor: grab;
+  touch-action: none; user-select: none; -webkit-user-select: none;
+  box-shadow: 0 0 0 2px #fff; transition: transform .15s, opacity .2s;
+}
+.nummer:hover { transform: scale(1.12); }
+.nummer.gewaehlt { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--typ-G); transform: scale(1.12); }
+.nummer.unterwegs { opacity: .3; }
+.nummer.erledigt { background: #b5babd; cursor: default; transform: none; box-shadow: none; }
+.nummer.falsch { animation: wackeln .4s; }
+.nummer.geist {
+  position: fixed; z-index: 50; pointer-events: none; transform: translate(-50%, -50%) scale(1.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,.35); cursor: grabbing;
+}
+@media (max-width: 760px) { .legende { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(6, auto); } }
+@media (max-width: 480px) { .legende { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; } }
+
+.bilder { display: flex; flex-direction: column; gap: 18px; --d: clamp(140px, 19vw, 205px); }
+.bilder-reihe { display: flex; justify-content: center; gap: 18px 28px; flex-wrap: wrap; }
+.bilder-reihe:nth-child(1) { justify-content: flex-start; padding-left: 0; }
+.bilder-reihe:nth-child(2) { padding-left: calc(var(--d) * .6); justify-content: flex-start; }
+.bilder-reihe:nth-child(3) { justify-content: flex-start; }
+.bilder-reihe:nth-child(4) { padding-left: calc(var(--d) * 1.6); justify-content: flex-start; }
+@media (max-width: 900px) { .bilder-reihe:nth-child(n) { padding-left: 0; justify-content: center; } }
+
+.illu {
+  position: relative; width: var(--d); height: var(--d); flex: none; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 0 1px #9a9fa2; font-size: calc(var(--d) / 10);
+  transition: box-shadow .15s, transform .15s;
+}
+.illu > img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.illu.drueber { box-shadow: 0 0 0 4px var(--grau-dunkel); transform: scale(1.03); }
+.waehlt .illu:not(.belegt) { cursor: pointer; }
+.waehlt .illu:not(.belegt):hover { box-shadow: 0 0 0 4px var(--grau-dunkel); }
+.illu.falsch { animation: wackeln .4s; }
+.illu.treffer { box-shadow: 0 0 0 5px var(--richtig); }
+.illu.fehlt { box-shadow: 0 0 0 4px var(--falsch); }
+
+.steuer { position: absolute; display: flex; align-items: center; gap: .15em; }
+.pfeile { display: flex; flex-direction: column; gap: .2em; }
+.e-pfeil { width: 1.05em; height: 1.35em; border: 0; padding: 0; background: none; cursor: pointer; display: block; }
+.e-pfeil svg { width: 100%; height: 100%; fill: #fff; stroke: #666; stroke-width: 1.3; transition: fill .15s; }
+.e-pfeil:hover svg { stroke: #222; }
+.e-pfeil.an svg { fill: #cbbd94; stroke: #8a7d57; }
+.zielkreis {
+  width: 1.45em; height: 1.45em; border-radius: 50%; border: 1px solid #555; background: #fff; padding: 0;
+  font-family: var(--sans); font-weight: 700; font-size: 1em; line-height: 1; color: #fff; cursor: default;
+  display: flex; align-items: center; justify-content: center;
+}
+.zielkreis:not(:empty) { background: #111; border-color: #111; font-size: .8em; width: 1.8em; height: 1.8em; }
+
+.energie-meldung { text-align: center; color: var(--falsch); font-weight: 600; min-height: 1.4em; margin: 34px 0 10px; }

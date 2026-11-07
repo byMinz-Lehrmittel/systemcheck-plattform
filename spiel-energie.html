@@ -9,6 +9,7 @@
 <link rel="preload" href="assets/fonts/faustina-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <script src="js/main.js"></script>
+<script src="js/spiel-energie.js" defer></script>
 </head>
 <body>
 <header class="kopf">
@@ -23,10 +24,18 @@
 <a class="knopf zurueck-knopf" href="uebersicht.html#lernende">← Zur Übersicht</a>
 <section class="panel spiel">
   <img class="spiel-deko" src="assets/img/tablet.webp" alt="">
-  <div class="bald">
-    <h2>Energie regulieren in der Schule</h2>
-    <p>Diese interaktive Aufgabe ist bald hier verfügbar.</p>
+  <div class="spiel-kopf">
+    <h2>Energie regulieren<br>in der Schule</h2>
+    <p>Wenn dein Energiesystem unter- oder überreguliert ist und du dich nicht mehr konzentrieren kannst, gibt es einfache Strategien, die helfen können.</p>
   </div>
+  <div class="energie-intro">
+    <div class="energie-anleitung">
+      <p>Ordne den 12 Bildern die passenden Texte zu, indem du die Nummern auf die Kreise in den Bildern ziehst.</p>
+      <p>Überlege dir zudem, welche der Strategien für dich funktionieren könnten, und entscheide, ob sie dich <svg class="mini-pfeil" viewBox="0 0 20 26" aria-hidden="true"><path d="M10 1 L19 11 H14 V25 H6 V11 H1 Z"/></svg> aktivieren oder <svg class="mini-pfeil" viewBox="0 0 20 26" aria-hidden="true"><path d="M10 25 L19 15 H14 V1 H6 V15 H1 Z"/></svg> beruhigen. Tippe dazu die Pfeile an.</p>
+    </div>
+    <button class="knopf neu-starten" type="button" id="neu-starten">Neu starten</button>
+  </div>
+  <div id="energie"></div>
 </section>
 </main>
 <footer class="fuss">
