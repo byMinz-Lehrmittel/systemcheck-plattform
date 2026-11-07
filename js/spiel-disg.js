@@ -10,9 +10,9 @@ const REIHENFOLGE = ["D", "I", "G", "S"]; // wie im Layout: oben D, I – unten 
 
 /* Die acht Themen. «blase» ist der Text in der Sprechblase. */
 const THEMEN = [
-  { blase: "Darauf konzentriere ich mich", antworten: { D: "Dinge erledigen", I: "Positiv bleiben", S: "Harmonie", G: "Kleine Details" } },
+  { blase: "Darauf konzentriere ich mich", antworten: { D: "Anpacken", I: "Positiv bleiben", S: "Harmonie", G: "Kleine Details" } },
   { blase: "Danach suche ich", antworten: { D: "Action", I: "Spass", S: "Freundlichkeit", G: "Genauigkeit" } },
-  { blase: "Gehe ich Risiken ein?", antworten: { D: "Auf jeden Fall!", I: "Na klar!", S: "Spricht Mut zu", G: "Nur überlegte" } },
+  { blase: "Gehe ich Risiken ein?", antworten: { D: "Geht mutig drauf los.", I: "Probiert aus.", S: "Braucht Ermutigung.", G: "Wägt gründlich ab." } },
   { blase: "Das mag ich", antworten: { D: "Abenteuer", I: "Viele Freunde", S: "Anderen zu helfen", G: "Sich klug fühlen" } },
   { blase: "Das mag ich nicht", antworten: {
       D: "Verlieren, zu viele Regeln, keine Kontrolle",
