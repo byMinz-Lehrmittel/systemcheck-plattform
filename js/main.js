@@ -8,15 +8,22 @@ const ZUGANG = {
 };
 
 // Geschützte Seiten: ohne Code zurück zur Startseite
+// (die gewünschte Seite wird gemerkt, z.B. wenn jemand einen QR-Code scannt)
+const SEITEN = ["uebersicht.html", "audio-persoenlichkeiten.html", "spiel-disg.html", "spiel-energie.html"];
 if (document.documentElement.dataset.geschuetzt === "ja" && !ZUGANG.ok()) {
-  location.replace("index.html");
+  const seite = location.pathname.split("/").pop();
+  location.replace("index.html" + (SEITEN.includes(seite) ? "?weiter=" + encodeURIComponent(seite + location.hash) : ""));
+}
+function weiterZiel() {
+  const w = new URLSearchParams(location.search).get("weiter") || "";
+  return SEITEN.includes(w.split("#")[0]) ? w : "uebersicht.html";
 }
 
 /* ---------- Startseite: Code prüfen ---------- */
 function startseite() {
   const form = document.getElementById("code-form");
   if (!form) return;
-  if (ZUGANG.ok()) { location.replace("uebersicht.html"); return; }
+  if (ZUGANG.ok()) { location.replace(weiterZiel()); return; }
   const feld = document.getElementById("code");
   const fehler = document.getElementById("fehler");
   const karte = form.closest(".karte");
@@ -24,7 +31,7 @@ function startseite() {
     e.preventDefault();
     if (feld.value.trim() === ZUGANG.code) {
       ZUGANG.merken();
-      location.href = "uebersicht.html";
+      location.href = weiterZiel();
     } else {
       fehler.textContent = "Dieser Code stimmt leider nicht. Versuch es nochmals.";
       karte.classList.remove("wackeln"); void karte.offsetWidth; karte.classList.add("wackeln");
