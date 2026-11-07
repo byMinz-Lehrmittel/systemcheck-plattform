@@ -20,10 +20,10 @@ const STRATEGIEN = {
 /* Bilder in Reihen wie im Layout. nr = richtige Nummer,
    x/y = Position der Pfeile + Zielkreis im Bild (in %) */
 const REIHEN = [
-  [{ nr: 5, x: 12, y: 19 }, { nr: 12, x: 66, y: 22 }, { nr: 8, x: 12, y: 29 }],
-  [{ nr: 1, x: 68, y: 25 }, { nr: 11, x: 65, y: 24 }, { nr: 2, x: 12, y: 20 }],
-  [{ nr: 7, x: 40, y: 14 }, { nr: 6, x: 12, y: 22 }, { nr: 3, x: 3, y: 30 }, { nr: 9, x: 4, y: 22 }],
-  [{ nr: 10, x: 13, y: 19 }, { nr: 4, x: 60, y: 18 }]
+  [{ nr: 5, x: 11.5, y: 18 }, { nr: 12, x: 14.5, y: 17 }, { nr: 8, x: 11, y: 29 }],
+  [{ nr: 1, x: 67, y: 24 }, { nr: 11, x: 9.5, y: 28 }, { nr: 2, x: 12.5, y: 19 }],
+  [{ nr: 7, x: 17, y: 18 }, { nr: 6, x: 10, y: 23.5 }, { nr: 3, x: 10.5, y: 28 }, { nr: 9, x: 12, y: 25 }],
+  [{ nr: 10, x: 14, y: 19 }, { nr: 4, x: 13, y: 19 }]
 ];
 
 const PFEIL = (richtung) => `<svg viewBox="0 0 20 26" aria-hidden="true"><path d="${
