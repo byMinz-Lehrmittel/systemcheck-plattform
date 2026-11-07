@@ -10,18 +10,18 @@ const REIHENFOLGE = ["D", "I", "G", "S"]; // wie im Layout: oben D, I – unten 
 
 /* Die acht Themen. «blase» ist der Text in der Sprechblase. */
 const THEMEN = [
-  { blase: "Darauf konzentriere ich mich.", antworten: { D: "Dinge erledigen", I: "Positiv bleiben", S: "Harmonie", G: "Kleine Details" } },
-  { blase: "Danach suche ich.", antworten: { D: "Action", I: "Spass", S: "Freundlichkeit", G: "Genauigkeit" } },
+  { blase: "Darauf konzentriere ich mich", antworten: { D: "Dinge erledigen", I: "Positiv bleiben", S: "Harmonie", G: "Kleine Details" } },
+  { blase: "Danach suche ich", antworten: { D: "Action", I: "Spass", S: "Freundlichkeit", G: "Genauigkeit" } },
   { blase: "Gehe ich Risiken ein?", antworten: { D: "Auf jeden Fall!", I: "Na klar!", S: "Spricht Mut zu", G: "Nur überlegte" } },
-  { blase: "Mag ich", antworten: { D: "Abenteuer", I: "Viele Freunde", S: "Anderen zu helfen", G: "Sich klug fühlen" } },
-  { blase: "Mag ich nicht", antworten: {
+  { blase: "Das mag ich", antworten: { D: "Abenteuer", I: "Viele Freunde", S: "Anderen zu helfen", G: "Sich klug fühlen" } },
+  { blase: "Das mag ich nicht", antworten: {
       D: "Verlieren, zu viele Regeln, keine Kontrolle",
       I: "Negativität, Details, langweilige Arbeiten",
       S: "Konflikte, Gemeinheit, plötzliche Veränderung",
       G: "Unordnung, Ungenauigkeit, Zeitdruck" } },
-  { blase: "Dabei helfe ich anderen.", antworten: { D: "Aktiv zu werden", I: "Motiviert zu bleiben", S: "Gemeinsam zu handeln", G: "Sich zu verbessern" } },
-  { blase: "Dies ist für mich die schönste Belohnung.", antworten: { D: "Pokale", I: "Fröhliche Gesichter", S: "Aufrichtiges Dankeschön", G: "Erfolg" } },
-  { blase: "So spreche ich.", antworten: { D: "Sehr direkt", I: "Erzählt gerne Geschichten", S: "Höflich und respektvoll", G: "Nachdenklich" } }
+  { blase: "Dabei helfe ich anderen", antworten: { D: "Aktiv zu werden", I: "Motiviert zu bleiben", S: "Gemeinsam zu handeln", G: "Sich zu verbessern" } },
+  { blase: "Die schönste Belohnung ist", antworten: { D: "Pokale", I: "Fröhliche Gesichter", S: "Aufrichtiges Dankeschön", G: "Erfolg" } },
+  { blase: "So spreche ich", antworten: { D: "Sehr direkt", I: "Erzählt gerne Geschichten", S: "Höflich und respektvoll", G: "Nachdenklich" } }
 ];
 
 const LOB = ["Super!", "Genau!", "Richtig!", "Stark!", "Toll!"];
@@ -99,7 +99,7 @@ function stufe1(typ, i) {
         <div class="name">${TYPEN[typ].name}</div>
       </div>
       <div class="frage-rechts">
-        <div class="blase">${thema.blase}</div>
+        <img class="blase" src="assets/img/blase-${i + 1}.webp" alt="${thema.blase}" width="338" height="269">
         <div class="antworten">${reihen.map((t) => `<button class="antwort" type="button" data-t="${t}">${thema.antworten[t]}</button>`).join("")}</div>
       </div>
     </div>`;
@@ -139,7 +139,7 @@ function stufe2(i) {
     `<p class="hinweis">Tippe zuerst eine Aussage an und dann die Person, zu der sie passt.</p>
     <div class="stufe2">
       <div class="links">
-        <div class="blase gross">${thema.blase}</div>
+        <img class="blase gross" src="assets/img/blase-${i + 1}.webp" alt="${thema.blase}" width="338" height="269">
         ${reihen.map((t) => `<button class="antwort" type="button" data-t="${t}" aria-pressed="false">${thema.antworten[t]}</button>`).join("")}
       </div>
       <div class="fotos">${["D", "S", "I", "G"].map((t) => `
@@ -187,7 +187,7 @@ function geschafft() {
   app.innerHTML = `<div class="fertig">
       <h2>Geschafft!</h2>
       <p>Du kennst die Merkmale der vier DISG-Persönlichkeitstypen.<br>Das ist eine gute Grundlage, um weiter über die vielseitige Individualität von Menschen nachzudenken.</p>
-      <a class="knopf" href="uebersicht.html">Zurück zum Start</a>
+      <a class="knopf" href="uebersicht.html#lernende">Zurück zur Übersicht</a>
       <div class="unten"><button class="knopf" type="button" data-aktion="neu">Neu starten</button></div>
     </div>`;
   aktionen({});

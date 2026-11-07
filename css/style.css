@@ -87,10 +87,9 @@ main { flex: 1; width: 100%; min-width: 0; overflow-x: clip; max-width: 1040px; 
   text-align: center;
 }
 .karte::before { /* Klebeband */
-  content: ""; position: absolute; top: -6px; left: 50%;
-  width: 66px; height: 14px; transform: translateX(-50%) rotate(-1deg);
-  background: var(--grau-dunkel); border-radius: 2px;
-  clip-path: polygon(0 10%, 4% 0, 96% 8%, 100% 0, 98% 100%, 2% 92%);
+  content: ""; position: absolute; top: -8px; left: 50%;
+  width: 70px; height: 17px; transform: translateX(-50%);
+  background: url("../assets/img/klebeband.png") center / 100% 100% no-repeat;
 }
 .karte .bild { height: 96px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
 .karte .bild img { max-height: 96px; width: auto; }
@@ -133,24 +132,8 @@ a.karte:hover, a.karte:focus-visible { transform: translateY(-3px); box-shadow: 
 
 /* ---------- Übersicht ---------- */
 .bereich { position: relative; margin-top: 70px; }
-.bereich-label {
-  position: absolute; top: -66px; left: 0; z-index: 2;
-  width: 156px; height: 108px; padding: 18px 10px 0;
-  font-family: var(--serif); font-weight: 700; font-size: 19px; line-height: 1.2; text-align: center;
-}
-.bereich-label::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: currentColor; border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
-}
-.bereich-label::after {
-  content: ""; position: absolute; left: 96px; bottom: -14px; z-index: -1;
-  border: 14px solid transparent; border-top: 22px solid currentColor; border-bottom: 0; transform: skewX(-25deg);
-}
-.bereich-label span { color: #fff; }
-.bereich-label--lp { color: var(--grau-dunkel); }
-.bereich-label--sus { color: #e6e8e9; }
-.bereich-label--sus::before { box-shadow: inset 0 0 0 1px #777; }
-.bereich-label--sus span { color: var(--text); }
+.bereich-label { position: absolute; top: -78px; left: -6px; z-index: 2; margin: 0; width: 160px; }
+.bereich-label img { width: 100%; }
 
 .bereich-box { border-radius: 18px; padding: 30px 20px; }
 .bereich--lp .bereich-box { border: 1.5px dashed #777; }
@@ -202,8 +185,10 @@ a.karte:hover, a.karte:focus-visible { transform: translateY(-3px); box-shadow: 
 
 /* ---------- Seiten mit grauem Panel ---------- */
 .panel { position: relative; background: var(--grau-panel); border-radius: 18px; padding: 30px; }
-.zurueck-link { display: inline-block; margin: 0 0 18px; font-size: 14px; text-decoration: none; }
-.zurueck-link:hover { text-decoration: underline; }
+.zurueck-knopf { margin: 0 0 22px; }
+#lernende { scroll-margin-top: 100px; }
+.logo img { width: 100%; }
+.fuss-logo { display: block; }
 
 /* Audioseite */
 .audio-raster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
@@ -218,7 +203,7 @@ a.karte:hover, a.karte:focus-visible { transform: translateY(-3px); box-shadow: 
 
 /* ---------- Spiel ---------- */
 .spiel { padding-top: 46px; }
-.spiel-deko { position: absolute; left: -12px; top: -14px; width: 210px; mix-blend-mode: multiply; transform: rotate(-3deg); }
+.spiel-deko { position: absolute; left: -14px; top: -18px; width: 200px; }
 .spiel-kopf { text-align: center; max-width: 600px; margin: 0 auto; }
 .spiel-kopf h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; margin: 0 0 12px; }
 .spiel-kopf p { margin: 0; font-size: 18px; }
@@ -270,14 +255,8 @@ a.karte:hover, a.karte:focus-visible { transform: translateY(-3px); box-shadow: 
 .badge.S { background: var(--typ-S); } .badge.G { background: var(--typ-G); }
 
 /* Sprechblase */
-.blase {
-  position: relative; width: 236px; height: 205px;
-  background: url("../assets/img/sprechblase.webp") center / contain no-repeat;
-  display: flex; align-items: center; justify-content: center; padding: 0 34px 34px 22px;
-  font-family: var(--serif); font-weight: 700; font-size: 23px; line-height: 1.15; text-align: center;
-  mix-blend-mode: multiply;
-}
-.blase.gross { width: 280px; height: 244px; font-size: 25px; }
+.blase { width: 260px; height: auto; display: block; }
+.blase.gross { width: 300px; }
 
 /* Stufe 1 – Fragen */
 .frage { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: end; }
