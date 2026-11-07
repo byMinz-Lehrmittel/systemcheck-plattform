@@ -403,3 +403,5 @@ a.karte:hover, a.karte:focus-visible { transform: translateY(-3px); box-shadow: 
 .zielkreis:not(:empty) { background: #111; border-color: #111; font-size: .8em; width: 1.8em; height: 1.8em; }
 
 .energie-meldung { text-align: center; color: var(--falsch); font-weight: 600; min-height: 1.4em; margin: 34px 0 10px; }
+
+[hidden] { display: none !important; }
